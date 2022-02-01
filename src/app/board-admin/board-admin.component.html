@@ -1,0 +1,33 @@
+<div class="container">
+  <header class="jumbotron">
+    <!-- <p>{{ content }}</p> -->
+    <h1>Dashboard Admins</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>#ID</th>
+          <th>name</th>
+          <th>email</th>
+          <th>Avatar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of admins">
+          <td>#{{ admin.id }}</td>
+          <td>
+            <strong>{{ admin.username }}</strong>
+          </td>
+          <td>{{ admin.email }}</td>
+          <td>
+            <img
+              src="https://avatars.dicebear.com/api/human/{{
+                admin.username
+              }}.svg?background=%230000ff"
+              alt=""
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+</div>

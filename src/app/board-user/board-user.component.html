@@ -1,0 +1,163 @@
+<div class="container">
+  <header class="jumbotron">
+    <h1>Flutter clients list</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>#ID</th>
+          <th>name</th>
+          <th>email</th>
+          <th>Avatar</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>#{{ client.id }}</td>
+          <td>
+            <strong>{{ client.username }}</strong>
+          </td>
+          <td>{{ client.email }}</td>
+          <td>
+            <img
+              src="https://avatars.dicebear.com/api/micah/{{
+                client.username
+              }}.svg?background=%230000ff"
+              alt=""
+            />
+          </td>
+          <td>
+            <a
+              href=""
+              class="text-danger font-weight-bold"
+              data-toggle="modal"
+              data-target="#deleteModal"
+              (click)="onGetClient(client)"
+              >Delete</a
+            >
+            <br />
+            <a
+              (click)="onGetClient(client)"
+              href=""
+              data-toggle="modal"
+              data-target="#updateModal"
+              class="text-primary font-weight-bold"
+              >Edit</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+</div>
+
+<!-- Edit Modal -->
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="updateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Edit Client</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #editForm="ngForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Username:</label>
+            <input
+              ngModel="{{ editedClient?.username }}"
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Email:</label>
+            <input
+              type="hidden"
+              ngModel="{{ editedClient?.id }}"
+              name="id"
+              ngModel
+            />
+            <input
+              ngModel="{{ editedClient?.email }}"
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            (click)="onUpdateClient(editForm.value)"
+            data-dismiss="modal"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Client</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure that you want to delete {{ editedClient?.username}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          (click)="onDeleteClient(editedClient?.id)"
+          class="btn btn-primary"
+          data-dismiss="modal"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

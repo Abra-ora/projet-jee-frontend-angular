@@ -1,0 +1,11 @@
+.content {
+  margin-top: 60px;
+  white-space: pre-wrap;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <header class="jumbotron">
+    <h1>K-means Data Visualization</h1>
+    <br />
+    <p>
+      <strong>
+        we will be illustrating how to apply K Means algorithm to a dataset.We
+        here have a data of customers who buy things at a mall.In the data set
+        there are information like ex,Age,Income and Spending Score.We will
+        implement K means clustering on the data and then see what conclusion we
+        can arrive at.We will be covering following things
+      </strong>
+    </p>
+    <p>
+      <strong>
+        1.Exploring the Dataset <br />
+        2.Vizualizing the Data Set <br />3.K Means Algorithm | Elbow Method |
+        Customer Segmentation <br />4.Relation between Age and Spending Score
+        <br />5.Relation between Age and Income <br />6.Relation between
+        Age,Annual Income and Spending Score This is a work in process and I
+        will be updating the kernel in the coming days.If you like my work
+        please do vote.
+      </strong>
+    </p>
+  </header>
+  <div class="content" *ngFor="let graph of graphs">
+    <h3 class="title">{{ graph.title }}</h3>
+    <div class="description">
+      <p>{{ graph.description }}</p>
+    </div>
+    <div class="graph">
+      <img src="../../assets/graphs/{{ graph.name }}" alt="" />
+    </div>
+  </div>
+</div>

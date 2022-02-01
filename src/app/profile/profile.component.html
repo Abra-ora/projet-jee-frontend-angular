@@ -1,0 +1,25 @@
+<div class="container mt-5" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <h3>
+      <strong>{{ currentUser.username }}'s</strong> Profile <br />
+      Role: <Strong>Admin</Strong>
+    </h3>
+    <img
+      src="https://avatars.dicebear.com/api/human/{{
+        currentUser.username
+      }}.svg?background=%230000ff"
+      alt=""
+    />
+  </header>
+  <p>
+    <strong>Token:</strong>
+    {{ currentUser.accessToken.substring(0, 20) }} ...
+    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+  </p>
+  <p>
+    <strong>Email:</strong>
+    {{ currentUser.email }}
+  </p>
+</div>
+
+<ng-template #loggedOut> Please login. </ng-template>
